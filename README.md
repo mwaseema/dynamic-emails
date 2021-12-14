@@ -1,0 +1,1 @@
+A small package for sending emails dynamically.
