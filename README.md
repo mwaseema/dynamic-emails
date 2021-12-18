@@ -41,4 +41,7 @@ Following command can be used to send the emails:
 
 # Sample Files
 
-Coming soon...
+[sample_files](https://github.com/mwaseema/dynamic-emails/tree/main/sample_files) folder contains `html_body.html`, `plain_body.txt` and `data.csv` files. Minimum requirement for the `data.csv` file is to contain `email_to` column. Other than this, any number of columns with unique names can be added. These columns can be referenced in the plain text and html email body templates i.e. `{{email_to}}`
+
+# Caution
+Every email provider can have different limits on number of emails per second and per day. Gmail has a limit of 2000 per day, please make sure you don't go beyond that or your account can be suspened temporarily.
