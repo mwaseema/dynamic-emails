@@ -13,11 +13,15 @@ You need a PC with following requirements:
 
 Following command can be used to install the package:
 
-`python -m pip install git+https://github.com/mwaseema/dynamic-emails.git`
+```shell
+python -m pip install git+https://github.com/mwaseema/dynamic-emails.git
+```
 
 Following command can be used to send the emails:
 
-`python -m dynamic_emails --smtp-host "smtp.gmail.com" --smtp-port 465 --from-email "your-email-address-here" --app-key "your-app-key-here" --cc-emails "cc-email-address-or-comma-separated-addresses" --bcc-emails "bcc-email-address-or-comma-separated-addresses" --subject "Email subject" --data-csv-file "path-to-csv-file.csv" --plain-email-body-file "path-to-plain-email-body.txt" --html-email-body-file "path-to-html-email-body.html" --attachment "path-to-attachment-file-or-folder-of-attachments"`
+```shell
+python -m dynamic_emails --smtp-host "smtp.gmail.com" --smtp-port 465 --from-email "your-email-address-here" --app-key "your-app-key-here" --cc-emails "cc-email-address-or-comma-separated-addresses" --bcc-emails "bcc-email-address-or-comma-separated-addresses" --subject "Email subject" --data-csv-file "path-to-csv-file.csv" --plain-email-body-file "path-to-plain-email-body.txt" --html-email-body-file "path-to-html-email-body.html" --attachment "path-to-attachment-file-or-folder-of-attachments"
+```
 
 ## Flags
 
