@@ -1,9 +1,9 @@
 import argparse
 import time
 from glob import glob
+from os import path
 
 from tqdm import tqdm
-from os import path
 
 from dynamic_emails.libs.csv_parser import get_csv_data
 from dynamic_emails.libs.email import Email
@@ -13,6 +13,8 @@ parser.add_argument('--smtp-host', type=str, required=True, help='SMTP server ad
 parser.add_argument('--smtp-port', type=int, required=True, help='SMTP server port')
 parser.add_argument('--from-email', type=str, required=True, help='Your email')
 parser.add_argument('--app-key', type=str, required=True, help='App key for connecting with your account')
+parser.add_argument('--cc-emails', type=str, required=False, help='CC Email or comma separated emails')
+parser.add_argument('--bcc-emails', type=str, required=False, help='BCC Email or comma separated emails')
 parser.add_argument('--subject', type=str, required=True, help='Subject for the email')
 parser.add_argument('--data-csv-file', type=str, required=True, help='Path to the .csv file containing data')
 parser.add_argument('--plain-email-body-file', type=str, required=True,
@@ -49,6 +51,8 @@ def main():
     smtp_port = args.smtp_port
     from_email = args.from_email
     app_key = args.app_key
+    cc_emails = args.cc_emails
+    bcc_emails = args.bcc_emails
     subject = args.subject
     data_csv_file = args.data_csv_file
     plain_email_body_file = args.plain_email_body_file
@@ -65,6 +69,9 @@ def main():
     csv_data = get_csv_data(data_csv_file)
     attachment_list = get_attachment_list(attachment) if attachment else []
 
+    cc_emails = [cce.strip() for cce in cc_emails.split(',')] if cc_emails else []
+    bcc_emails = [bcce.strip() for bcce in bcc_emails.split(',')] if bcc_emails else []
+
     for row in tqdm(csv_data, desc='Sending emails', unit='email'):
         assert 'to_email' in row, "'to_email' should be present in the CSV for sending emails"
 
@@ -74,7 +81,8 @@ def main():
         __plain_email_body = replace_placeholders(row, plain_email_body)
         __html_email_body = replace_placeholders(row, html_email_body) if html_email_body else None
 
-        email_obj.send_email(to_email, subject, __plain_email_body, __html_email_body, attachment_paths=attachment_list)
+        email_obj.send_email(to_email, subject, __plain_email_body, __html_email_body, cc_emails, bcc_emails,
+                             attachment_list)
 
         time.sleep(0.5)
 

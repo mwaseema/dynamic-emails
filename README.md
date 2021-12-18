@@ -17,7 +17,7 @@ Following command can be used to install the package:
 
 Following command can be used to send the emails:
 
-`python -m dynamic_emails --smtp-host "smtp.gmail.com" --smtp-port 465 --from-email "your-email-address-here" --app-key "your-app-key-here" --subject "Email subject" --data-csv-file "path-to-csv-file.csv" --plain-email-body-file "path-to-plain-email-body.txt" --html-email-body-file "path-to-html-email-body.html" --attachment "path-to-attachment-file-or-folder-of-attachments"`
+`python -m dynamic_emails --smtp-host "smtp.gmail.com" --smtp-port 465 --from-email "your-email-address-here" --app-key "your-app-key-here" --cc-emails "cc-email-address-or-comma-separated-addresses" --bcc-emails "bcc-email-address-or-comma-separated-addresses" --subject "Email subject" --data-csv-file "path-to-csv-file.csv" --plain-email-body-file "path-to-plain-email-body.txt" --html-email-body-file "path-to-html-email-body.html" --attachment "path-to-attachment-file-or-folder-of-attachments"`
 
 ## Flags
 
@@ -28,6 +28,10 @@ Following command can be used to send the emails:
 `--from-email` You'll need to give your email address which will be used for authentication on the server and will be used for sending out emails.
 
 `--app-key` You'll need to put your app key or password here. If you are using gmail and don't have 2 factor authentication enabled on your gmail then this can be the password of your account. I would suggest you to enable 2 factor authentication and generate an app password for your account. Visit [here](https://myaccount.google.com/apppasswords) for generating app password for your gmail account.
+
+`--cc-emails` **(Optional)** CC email address or comma separated multiple email addresses e.g. `abc@example.com, abc2@example.com`
+
+`--bcc-emails` **(Optional)** BCC email address or comma separated multiple email addresses
 
 `--subject` This will be used as an email subject.
 
