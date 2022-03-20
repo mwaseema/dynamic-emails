@@ -1,6 +1,6 @@
 Dear {{user_name}},
 
-I've read your paper titled <b>{{paper_title}}</b> which is amazing. Just wanted to thank you for your work.
+I've read your paper titled {{paper_title}} which is amazing. Just wanted to thank you for your work.
 
 Regards,
 mwaseema
